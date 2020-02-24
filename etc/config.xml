@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <pronko_authorizenetvisa>
+                <title>Pronko Authorize.NET VISA Payment</title>
+
+                <can_initialize>1</can_initialize>
+
+                <paymentInfoKeys>card_type,exp_date</paymentInfoKeys>
+                <sdk_url_sandbox>https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js</sdk_url_sandbox>
+                <sdk_url>https://assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js</sdk_url>
+                <checkout_button_src_sandbox>https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png</checkout_button_src_sandbox>
+                <checkout_button_src>https://secure.checkout.visa.com/wallet-services-web/xo/button.png</checkout_button_src>
+                <payment_card_src>https://assets.secure.checkout.visa.com/VCO/images/acc_49x31_wht01.png</payment_card_src>
+
+                <merchant_source_id>Merchant Defined Source ID</merchant_source_id>
+                <api_key_sandbox>324J3WJXWXNMWFAJOBIN21TNsZ5vVd-5w3WEXT49SFy3ZMTwQ</api_key_sandbox>
+                <api_key/>
+
+                <review_message>Custom Review Message</review_message>
+                <button_action_tittle>Pay</button_action_tittle>
+                <is_collect_shipping>1</is_collect_shipping>
+                <display_name>Pronko Consulting Ltd.</display_name>
+            </pronko_authorizenetvisa>
+        </payment>
+    </default>
+</config>
