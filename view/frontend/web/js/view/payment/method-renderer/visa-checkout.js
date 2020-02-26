@@ -5,12 +5,12 @@ define([
 ], function (Component, completeAction, fullScreenLoader) {
     'use strict';
 
-    var config = window.checkoutConfig.payment.pronko_authorizenetvisa;
+    var config = window.checkoutConfig.payment.pronko_authorizenet;
 
     return Component.extend({
         defaults: {
             template: 'Pronko_AuthorizenetVisa/payment/visa-checkout',
-            code: 'pronko_authorizenetvisa',
+            code: 'pronko_authorizenet',
             isClicked: false,
             responseData: null,
             redirectAfterPlaceOrder: false

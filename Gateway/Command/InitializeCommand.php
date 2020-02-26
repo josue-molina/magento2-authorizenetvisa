@@ -1,0 +1,30 @@
+<?php
+
+namespace Pronko\AuthorizenetVisa\Gateway\Command;
+
+use Magento\Framework\DataObject;
+use Magento\Payment\Gateway\CommandInterface;
+use Magento\Sales\Api\Data\OrderInterface;
+use Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order\Payment;
+
+class InitializeCommand implements CommandInterface
+{
+    public function execute(array $commandSubject)
+    {
+        /** @var DataObject $stateObject */
+        $stateObject = $commandSubject['stateObject'];
+
+        /** @var Payment $payment */
+        $payment = $commandSubject['payment']->getPayment();
+
+        $payment->setAmountAuthorized($payment->getOrder()->getTotalDue());
+        $payment->setBaseAmountAuthorized($payment->getOrder()->getBaseTotalDue());
+        $payment->getOrder()->setCanSendNewEmailFlag(false);
+        $payment->getOrder()->setCustomerNoteNotify(false);
+
+        $stateObject->setData(OrderInterface::STATE, Order::STATE_PENDING_PAYMENT);
+        $stateObject->setData(OrderInterface::STATUS, Order::STATE_PENDING_PAYMENT);
+        $stateObject->setData('is_notified', false);
+    }
+}

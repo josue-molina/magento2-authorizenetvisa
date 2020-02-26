@@ -5,7 +5,7 @@ define([
     'use strict';
 
     rendererList.push({
-        type: 'pronko_authorizenetvisa',
+        type: 'pronko_authorizenet',
         component: 'Pronko_AuthorizenetVisa/js/view/payment/method-renderer/visa-checkout'
     });
 

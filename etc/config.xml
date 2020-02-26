@@ -2,7 +2,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
         <payment>
-            <pronko_authorizenetvisa>
+            <pronko_authorizenet>
                 <title>Pronko Authorize.NET VISA Payment</title>
 
                 <can_initialize>1</can_initialize>
@@ -22,7 +22,7 @@
                 <button_action_tittle>Pay</button_action_tittle>
                 <is_collect_shipping>1</is_collect_shipping>
                 <display_name>Pronko Consulting Ltd.</display_name>
-            </pronko_authorizenetvisa>
+            </pronko_authorizenet>
         </payment>
     </default>
 </config>

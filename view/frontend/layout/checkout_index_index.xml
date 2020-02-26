@@ -22,7 +22,7 @@
                                                             <item name="renders" xsi:type="array">
                                                                 <item name="children" xsi:type="array">
                                                                     <!-- merge payment method renders here -->
-                                                                    <item name="pronko_authorizenetvisa" xsi:type="array">
+                                                                    <item name="pronko_authorizenet" xsi:type="array">
                                                                         <item name="component" xsi:type="string">Pronko_AuthorizenetVisa/js/view/payment/authorizenet-visa</item>
                                                                     </item>
                                                                 </item>

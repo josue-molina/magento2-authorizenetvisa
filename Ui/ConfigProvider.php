@@ -55,7 +55,7 @@ class ConfigProvider implements ConfigProviderInterface
         $visaCheckoutButtonSrc = $this->config->getCheckoutButtonSrc() . '?cardBrands=VISA,MASTERCARD,DISCOVER,AMEX';
         return [
             'payment' => [
-                'pronko_authorizenetvisa' => [
+                'pronko_authorizenet' => [
                     'title' => $this->config->getTitle(),
                     'sdkUrl' => $this->config->getSdkUrl(),
                     'paymentCardSrc' => $this->config->getPaymentCardSrc(),

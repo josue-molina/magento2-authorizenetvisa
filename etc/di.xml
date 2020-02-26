@@ -5,4 +5,73 @@
             <argument name="commandPool" xsi:type="object">PronkoAuthorizenetCommandPool</argument>
         </arguments>
     </type>
+
+    <virtualType name="PronkoAuthorizenetCommandPool">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="initialize" xsi:type="string">Pronko\AuthorizenetVisa\Gateway\Command\InitializeCommand</item>
+                <item name="visa_complete" xsi:type="string">Pronko\AuthorizenetVisa\Gateway\Command\CompleteCommand</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="PronkoAuthorizenetVisaDecryptBuilderComposite" type="Magento\Payment\Gateway\Request\BuilderComposite">
+        <arguments>
+            <argument name="builders" xsi:type="array">
+                <item name="decrypt" xsi:type="string">Pronko\AuthorizenetVisa\Gateway\Request\DecryptBuilder</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Pronko\AuthorizenetVisa\Gateway\Command\CompleteCommand">
+        <arguments>
+            <argument name="requestBuilder" xsi:type="object">PronkoAuthorizenetVisaDecryptBuilderComposite</argument>
+            <argument name="transferFactory" xsi:type="object">Pronko\Authorizenet\Gateway\Http\TransferFactory</argument>
+            <argument name="client" xsi:type="object">Pronko\AuthorizenetVisa\Gateway\Http\Client</argument>
+            <argument name="validator" xsi:type="object">Pronko\AuthorizenetVisa\Gateway\Validator\GeneralResponseValidator</argument>
+            <argument name="handler" xsi:type="object">PronkoAuthorizenetVisaDecryptHandler</argument>
+        </arguments>
+    </type>
+
+    <type name="Pronko\AuthorizenetVisa\Gateway\Http\Client">
+        <arguments>
+            <argument name="logger" xsi:type="object">PronkoAuthorizenetLogger</argument>
+            <argument name="converter" xsi:type="object">Pronko\Authorizenet\Gateway\Converter\JsonToArray</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="PronkoAuthorizenetVisaDecryptHandler" type="Magento\Payment\Gateway\Response\HandlerChain">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="payment_details" xsi:type="string">Pronko\AuthorizenetVisa\Gateway\Response\PaymentDetailsHandler</item>
+                <item name="order_details" xsi:type="string">Pronko\AuthorizenetVisa\Gateway\Response\UpdateOrderHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="PronkoAuthorizenetValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="can_initialize" xsi:type="string">PronkoAuthorizenetVisaConfigValueHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="PronkoAuthorizenetVisaConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">Pronko\AuthorizenetVisa\Gateway\Config\Config</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Pronko\AuthorizenetVisa\Gateway\Config\Config" type="Magento\Payment\Gateway\Config\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="string">pronko_authorizenet</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Pronko\Authorizenet\Gateway\Config">
+        <arguments>
+            <argument name="valueHandlerPool" xsi:type="object">PronkoAuthorizenetValueHandlerPool</argument>
+        </arguments>
+    </type>
 </config>
